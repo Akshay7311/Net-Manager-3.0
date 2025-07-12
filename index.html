@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NetManager - Network Management Tool</title>
+    <link rel="stylesheet" href="Frontend/Css/style.css" />
+    <link rel="stylesheet" href="Frontend/Css/navbar.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-brand">NetManager</div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="Frontend/features.html">Features</a></li>
+        <li><a href="Frontend/about.html">About</a></li>
+        <li><a href="Frontend/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-content">
+        <h1>Advanced Network Management</h1>
+        <p>
+          Monitor, analyze, and secure your network infrastructure with our
+          comprehensive tool suite.
+        </p>
+        <a href="app.html" class="cta-button">Launch Application</a>
+      </div>
+    </header>
+
+    <section class="how-it-works">
+      <h2>How It Works</h2>
+      <div class="steps-container">
+        <div class="step">
+          <div class="step-icon">🔍</div>
+          <h3>Network Discovery</h3>
+          <p>
+            Automatically scan and identify all connected devices in your
+            network.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-icon">🛡️</div>
+          <h3>Security Check</h3>
+          <p>Analyze vulnerabilities and potential security risks.</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">📊</div>
+          <h3>Service Analysis</h3>
+          <p>Detect and monitor all running services and open ports.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo">
+      <h2>See It In Action</h2>
+      <div class="demo-container">
+        <div class="demo-content">
+          <div class="terminal">
+            <div class="terminal-header">
+              <span class="terminal-button"></span>
+              <span class="terminal-button"></span>
+              <span class="terminal-button"></span>
+            </div>
+            <div class="terminal-body">
+              <pre>
+> netmanager scan --network 192.168.1.0/24
+Scanning network...
+Found 23 devices
+Generating report...
+
+> netmanager analyze --devices 
+Device: printer01 (192.168.1.45)
+Status: Online
+Services: 3 running
+Ports: 21, 80, 443 open
+</pre
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 NetManager. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
