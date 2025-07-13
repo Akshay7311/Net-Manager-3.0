@@ -58,3 +58,5 @@ logs/
 # Temporary files
 *.tmp
 *.temp 
+
+scan_logs.log
