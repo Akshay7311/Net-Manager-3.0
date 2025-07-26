@@ -8,7 +8,8 @@ import logging
 
 # Initialize Flask app
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'netmanager_secret_key_2024'
+import os
+app.config['SECRET_KEY'] = os.environ.get('NETMANAGER_SECRET_KEY', 'default_secret_key')
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 logging.basicConfig(

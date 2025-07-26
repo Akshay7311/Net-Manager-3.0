@@ -20,7 +20,7 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
 
-ip_range = "192.168.38.1/24"
+ip_range = "192.168.126.1/24"
 
 logging.info("Starting network scan for range: %s", ip_range)
 
@@ -67,7 +67,7 @@ def parse_nmap_output(nmap_output):
             logging.info("Active IP detected: %s", ip)
     return active_ips
 
-def get_inactive_ips(active_ips, base_ip="192.168.38"):
+def get_inactive_ips(active_ips, base_ip="192.168.126"):
     inactive_ips = []
     for i in range(1, 255):
         ip = f"{base_ip}.{i}"
