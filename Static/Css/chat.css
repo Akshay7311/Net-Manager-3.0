@@ -1,0 +1,311 @@
+/* Discord-like layout and theme */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', 'Arial', 'Bookman Old Style', sans-serif;
+  background: #36393f;
+}
+.discord-bg {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  background: #36393f;
+}
+.discord-sidebar {
+  width: 240px;
+  min-width: 80px;
+  background: #2f3136;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  border-right: 1.5px solid #23272a;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.3em;
+  font-weight: 700;
+  padding: 28px 0 18px 32px;
+  letter-spacing: 1px;
+  background: #23272a;
+  border-bottom: 1px solid #23272a;
+}
+.sidebar-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.sidebar-title {
+  color: #fff;
+  font-size: 1.1em;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.sidebar-channels {
+  flex: 1 1 auto;
+  padding: 18px 0 0 0;
+}
+.sidebar-channel {
+  padding: 12px 32px;
+  font-size: 1.08em;
+  color: #b9bbbe;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.sidebar-channel.active, .sidebar-channel:hover {
+  background: #393c43;
+  color: #fff;
+  border-left: 4px solid #5865F2;
+}
+.discord-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #36393f;
+  position: relative;
+}
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 0 12px 32px;
+  background: #36393f;
+  border-bottom: 1px solid #23272a;
+}
+.logoimage {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.chat-header h1 {
+  font-size: 1.2em;
+  color: #fff;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.name-form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 10px 32px;
+}
+#name-input {
+  width: 60%;
+  padding: 10px 12px;
+  border: 1.5px solid #23272a;
+  border-radius: 7px;
+  font-size: 1em;
+  background: #40444b;
+  color: #fff;
+  transition: border 0.2s;
+}
+#name-input:focus {
+  border: 1.5px solid #5865F2;
+  outline: none;
+}
+#set-name-button {
+  padding: 10px 18px;
+  background: #5865F2;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#set-name-button:hover {
+  background: #4752c4;
+}
+.messages-area {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  background: #36393f;
+  border-radius: 0;
+  margin: 0 0 0 0;
+  padding: 18px 32px 10px 32px;
+  min-height: 220px;
+  max-height: 100vh;
+  font-size: 1.08em;
+  color: #fff;
+}
+.message {
+  margin-bottom: 14px;
+  padding: 0;
+  border-radius: 0;
+  font-size: 1.08em;
+  background: transparent !important;
+  color: #fff !important;
+  word-break: break-word;
+  box-shadow: none;
+  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+}
+.message .meta-block {
+  margin-right: 10px;
+  min-width: 120px;
+  text-align: left;
+  display: inline-block;
+}
+.message .msg-text {
+  font-size: 1.08em;
+  font-family: inherit;
+  word-break: break-word;
+  line-height: 1.7;
+  color: #fff;
+  display: inline-block;
+}
+.message.system {
+  background: #000 !important;
+  color: #fff !important;
+  text-align: center;
+  font-size: 1em;
+  font-style: italic;
+  border: none !important;
+  border-radius: 10px;
+  margin: 10px 0;
+  padding: 12px 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+  font-family: 'Bookman Old Style', Bookman, serif !important;
+  justify-content: center;
+}
+.name-role.role-purple { color: #5865F2 !important; }
+.name-role.role-red { color: #ED4245 !important; }
+.name-role.role-green { color: #57F287 !important; }
+.name-role.role-yellow { color: #FAA61A !important; }
+.name-role.role-pink { color: #EB459E !important; }
+.name-role.role-cyan { color: #00B0F4 !important; }
+.name-role.system {
+  color: #fff !important;
+  background: #000 !important;
+  font-family: 'Bookman Old Style', Bookman, serif !important;
+  padding: 2px 10px;
+  border-radius: 8px;
+  letter-spacing: 1px;
+}
+.name-role {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-right: 2px;
+  vertical-align: middle;
+}
+.ip-role {
+  font-weight: 500;
+  opacity: 0.7;
+  margin-left: 2px;
+  vertical-align: middle;
+}
+.meta-block {
+  display: inline-block;
+  margin-bottom: 2px;
+  margin-right: 6px;
+  font-size: 1.04em;
+}
+.sendbox {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 0 0;
+  padding: 18px 32px 18px 32px;
+  max-width: 100vw;
+  width: 100%;
+  background: #40444b;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
+#message-input {
+  flex: 1 1 auto;
+  padding: 12px 14px;
+  border: 1.5px solid #23272a;
+  border-radius: 9px;
+  font-size: 1.08em;
+  background: #40444b;
+  color: #fff;
+  transition: border 0.2s;
+  font-family: inherit;
+}
+#message-input:focus {
+  border: 1.5px solid #5865F2;
+  outline: none;
+}
+#send-button {
+  padding: 12px 22px;
+  background: #5865F2;
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  font-size: 1.08em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: inherit;
+  box-shadow: 0 1px 4px rgba(123,140,255,0.08);
+}
+#send-button:hover {
+  background: #4752c4;
+}
+.chat-footer {
+  text-align: center;
+  color: #bfc7d1;
+  font-size: 1em;
+  padding: 12px 0 0 0;
+  margin-top: 10px;
+  border-top: 1px solid #23272a;
+  background: #23272a;
+}
+@media (max-width: 900px) {
+  .discord-sidebar {
+    width: 60px;
+    min-width: 60px;
+    font-size: 0.9em;
+  }
+  .sidebar-header {
+    font-size: 1em;
+    padding: 18px 0 10px 10px;
+  }
+  .sidebar-channel, .sidebar-channel.active {
+    padding: 10px 10px;
+    font-size: 0.95em;
+  }
+  .discord-main {
+    padding-left: 0;
+  }
+  .chat-header, .name-form, .messages-area, .sendbox {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media (max-width: 600px) {
+  .discord-sidebar {
+    display: none;
+  }
+  .discord-main {
+    min-width: 0;
+    width: 100vw;
+    padding: 0;
+  }
+  .chat-header, .name-form, .messages-area, .sendbox {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}

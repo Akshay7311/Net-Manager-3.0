@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logs Viewer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        padding: 20px;
+        max-width: 1280px;
+        margin: 0 auto;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      #logs {
+        max-height: 80vh;
+        overflow-y: auto;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background: #f9f9f9;
+        font-family: monospace;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .loading {
+        text-align: center;
+        margin-top: 10px;
+        display: none;
+      }
+    </style>
+    <link rel="stylesheet" href="../Css/style.css" />
+    <link rel="stylesheet" href="../Css/navbar.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-brand">NetManager</div>
+      <ul class="nav-links">
+        <li><a href="../../templates/index.html" class="active">Home</a></li>
+        <li><a href="../../templates/app.html">App</a></li>
+        <li><a href="logs.html">Logs</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="container">
+      <h1>Logs Viewer</h1>
+
+      <div id="logs" style="overflow-y: scroll"></div>
+      <div class="loading" id="loading">Loading more logs...</div>
+    </div>
+
+    <script>
+      const logsContainer = document.getElementById("logs");
+      const loadingIndicator = document.getElementById("loading");
+      const logFile = "scan_logs.log"; // Path to the logs file
+      let startIndex = 0; // Start index for reading logs
+      const chunkSize = 50; // Number of logs to fetch at a time
+      let hasMoreLogs = true; // Track if more logs are available
+
+      // Function to fetch logs
+      async function fetchLogs() {
+        loadingIndicator.style.display = "block";
+        try {
+          // Read the log file
+          const response = await fetch(logFile);
+          const logText = await response.text();
+          const logs = logText.split("\n");
+
+          // Fetch the current chunk of logs
+          const chunk = logs.slice(startIndex, startIndex + chunkSize);
+
+          chunk.forEach((log, index) => {
+            if (log.trim()) {
+              const length = logsContainer.children.length;
+              const logElement = document.createElement("div");
+              logElement.textContent = `${length + 1}: --- ${log}`;
+              logsContainer.appendChild(logElement);
+            }
+          });
+
+          // Update the start index
+          startIndex += chunkSize;
+
+          // If no more logs, stop infinite scrolling
+          if (startIndex >= logs.length) {
+            hasMoreLogs = false;
+          }
+        } catch (error) {
+          console.error("Error loading logs:", error);
+        } finally {
+          loadingIndicator.style.display = "none";
+        }
+      }
+
+      // Infinite scrolling logic
+      logsContainer.addEventListener("scroll", () => {
+        if (
+          logsContainer.scrollTop + logsContainer.clientHeight >=
+          logsContainer.scrollHeight - 10
+        ) {
+          fetchLogs();
+        }
+      });
+
+      // Initial fetch
+      fetchLogs();
+    </script>
+  </body>
+</html>
